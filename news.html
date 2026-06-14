@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Новости — ProProfit Team</title>
+<meta name="description" content="Новости ProProfit: анонсы новых обзоров, события крипторынка и обновления проектов.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+  <button class="drawer-close" onclick="document.getElementById('burger').click()">×</button>
+  <h4>Разделы</h4>
+  <a href="index.html#reviews">📊 Обзоры</a>
+  <a href="news.html">📰 Новости</a>
+  <a href="otzyvy.html">⭐ Отзывы</a>
+  <a href="contacts.html">✉️ Контакты</a>
+  <h4>Сообщество</h4>
+  <a href="https://t.me/binibit_bini" target="_blank" rel="noopener">💬 Telegram-чат</a>
+  <a href="https://t.me/Clicx_Me" target="_blank" rel="noopener">📩 Личка: @Clicx_Me</a>
+</aside>
+
+<header class="site-header">
+  <div class="container nav">
+    <div class="nav-left">
+      <div class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></div>
+      <a href="index.html" class="logo">Pro<span>Profit</span> <i class="logo-badge">Team</i></a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html#reviews">Обзоры</a>
+      <a href="news.html">Новости</a>
+      <a href="otzyvy.html">Отзывы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <a href="https://t.me/binibit_bini" target="_blank" rel="noopener" class="btn btn-primary">Telegram-чат</a>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Новости</h2>
+    <p class="section-sub">Анонсы новых обзоров, обновления проектов и важные события. Новые — сверху.</p>
+    <div class="news-list" id="newsList"><!-- строится из реестра NEWS в app.js --></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Pro<span style="color:var(--accent)">Profit</span> Team</h4>
+        <p style="max-width:280px;">Независимые обзоры криптопроектов. Информация, не финансовый совет.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Разделы</h4>
+        <a href="index.html#reviews">Обзоры</a>
+        <a href="news.html">Новости</a>
+        <a href="otzyvy.html">Отзывы</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="https://t.me/binibit_bini" target="_blank" rel="noopener">Telegram-чат</a>
+        <a href="https://t.me/Clicx_Me" target="_blank" rel="noopener">Личка: @Clicx_Me</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ProProfit Team. Материалы носят информационный характер и не являются финансовым советом. Криптовалюты высоковолатильны.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

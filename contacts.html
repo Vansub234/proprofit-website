@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — ProProfit Team</title>
+<meta name="description" content="Свяжитесь с ProProfit Team: оставьте тикет, напишите на почту, в Telegram-чат, личку или подпишитесь на канал и YouTube.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+  <button class="drawer-close" onclick="document.getElementById('burger').click()">×</button>
+  <h4>Разделы</h4>
+  <a href="index.html#reviews">📊 Обзоры</a>
+  <a href="otzyvy.html">⭐ Отзывы</a>
+  <a href="contacts.html">✉️ Контакты</a>
+  <h4>Сообщество</h4>
+  <a href="https://t.me/binibit_bini" target="_blank" rel="noopener">💬 Telegram-чат</a>
+  <a href="https://t.me/Clicx_Me" target="_blank" rel="noopener">📩 Личка: @Clicx_Me</a>
+</aside>
+
+<header class="site-header">
+  <div class="container nav">
+    <div class="nav-left">
+      <div class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></div>
+      <a href="index.html" class="logo">Pro<span>Profit</span> <i class="logo-badge">Team</i></a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html#reviews">Обзоры</a>
+      <a href="otzyvy.html">Отзывы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <a href="https://t.me/binibit_bini" target="_blank" rel="noopener" class="btn btn-primary">Telegram-чат</a>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container" style="max-width:860px;">
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-sub">Свяжитесь с командой ProProfit удобным способом или оставьте обращение через форму.</p>
+
+    <!-- Каналы связи -->
+    <div class="contacts-grid">
+      <a class="contact-card" href="https://t.me/binibit_bini" target="_blank" rel="noopener">
+        <span class="ic">💬</span>
+        <h3>Telegram-чат</h3>
+        <p>Общение с сообществом, вопросы и обсуждения.</p>
+        <span class="val">t.me/binibit_bini</span>
+      </a>
+      <a class="contact-card" href="https://t.me/binibitnews" target="_blank" rel="noopener">
+        <span class="ic">📢</span>
+        <h3>Telegram-канал</h3>
+        <p>Новости, анонсы новых обзоров и материалы.</p>
+        <span class="val">t.me/binibitnews</span>
+      </a>
+      <a class="contact-card" href="https://t.me/Clicx_Me" target="_blank" rel="noopener">
+        <span class="ic">📩</span>
+        <h3>Личные сообщения</h3>
+        <p>Прямая связь по вопросам сотрудничества.</p>
+        <span class="val">@Clicx_Me</span>
+      </a>
+      <a class="contact-card" href="mailto:proprofit.team@gmail.com">
+        <span class="ic">✉️</span>
+        <h3>Почта</h3>
+        <p>Для деловых предложений и партнёрства.</p>
+        <span class="val">proprofit.team@gmail.com</span>
+      </a>
+      <a class="contact-card" href="#" target="_blank" rel="noopener">
+        <span class="ic">▶️</span>
+        <h3>YouTube</h3>
+        <p>Видео-обзоры и разборы проектов.</p>
+        <span class="val">Скоро — добавим ссылку</span>
+      </a>
+    </div>
+
+    <!-- Форма-тикет -->
+    <div class="reviews-section" style="margin-top:0;">
+      <h2>Оставить обращение (тикет)</h2>
+      <p class="reviews-sub">Заполните форму — мы свяжемся с вами указанным способом.</p>
+      <form class="review-form" id="ticketForm">
+        <div class="row">
+          <div>
+            <label>Ваше имя</label>
+            <input type="text" name="name" placeholder="Как к вам обращаться" required>
+          </div>
+          <div>
+            <label>Контакт для ответа</label>
+            <input type="text" name="contact" placeholder="Telegram / email" required>
+          </div>
+        </div>
+        <div class="row">
+          <div style="flex:1 1 100%;">
+            <label>Тема обращения</label>
+            <select name="topic">
+              <option>Сотрудничество с проектом</option>
+              <option>Стать админом / амбассадором</option>
+              <option>Предложить проект для обзора</option>
+              <option>Реклама / партнёрство</option>
+              <option>Вопрос по отзыву</option>
+              <option>Другое</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div style="flex:1 1 100%;">
+            <label>Сообщение *</label>
+            <textarea name="message" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить обращение</button>
+        <div class="review-ok" id="ticketOk">✅ Спасибо! Обращение принято. Мы свяжемся с вами. <br><span style="font-size:.82rem;">(Прототип: при выходе сайта в интернет тикеты будут приходить вам на почту/в Telegram.)</span></div>
+        <p class="hint">Нажимая «Отправить», вы соглашаетесь на обработку обращения. Не указывайте пароли иseed-фразы.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Pro<span style="color:var(--accent)">Profit</span> Team</h4>
+        <p style="max-width:280px;">Независимые обзоры криптопроектов. Информация, не финансовый совет.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Разделы</h4>
+        <a href="index.html#reviews">Обзоры</a>
+        <a href="otzyvy.html">Отзывы</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="https://t.me/binibit_bini" target="_blank" rel="noopener">Telegram-чат</a>
+        <a href="https://t.me/Clicx_Me" target="_blank" rel="noopener">Личка: @Clicx_Me</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ProProfit Team. Материалы носят информационный характер и не являются финансовым советом. Криптовалюты высоковолатильны.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
