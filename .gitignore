@@ -8,3 +8,6 @@ Thumbs.db
 # config.js содержит только публичный anon-ключ Supabase — его коммитить безопасно
 .env
 .env.local
+
+# Временные тестовые файлы
+_sbtest.*
