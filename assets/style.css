@@ -103,11 +103,17 @@ a:hover { color: #fff; }
 
 /* ===== Hero ===== */
 .hero {
-  padding: 90px 0 70px; text-align: center;
+  position: relative;
+  padding: 100px 0 80px; text-align: center;
   background:
+    linear-gradient(180deg, rgba(10,14,26,.55) 0%, rgba(10,14,26,.78) 55%, var(--bg) 100%),
+    url("hero-bg.png") center/cover no-repeat,
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,212,160,.12), transparent),
     radial-gradient(ellipse 60% 50% at 80% 20%, rgba(59,130,246,.10), transparent);
+  background-color: var(--bg);
+  overflow: hidden;
 }
+.hero > .container { position: relative; z-index: 2; }
 .hero h1 {
   font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800;
   line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 22px;

@@ -5,6 +5,17 @@
    slug — должен совпадать с именем html-файла в /reviews/ и с data-review-project. */
 const PROJECTS = [
   {
+    slug: 'pintopay',
+    name: 'PinToPay',
+    short: 'P2P',
+    tag: 'Крипто-карта · Обзор',
+    rating: 3.5,
+    date: '2026-06-16',
+    dateText: '16 июня 2026',
+    summary: 'Предоплаченная крипто-карта Visa/Mastercard с пополнением USDT и онбордингом через Telegram-бота. Разбираем комиссии, лимиты, кастодиальную модель и риски «серой зоны».',
+    url: 'reviews/pintopay.html'
+  },
+  {
     slug: 'binibit',
     name: 'BiniBit (BINI)',
     short: 'BINI',
