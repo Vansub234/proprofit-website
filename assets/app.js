@@ -5,33 +5,68 @@
    slug — должен совпадать с именем html-файла в /reviews/ и с data-review-project. */
 const PROJECTS = [
   {
-    slug: 'pintopay',
-    name: 'PinToPay',
-    short: 'P2P',
-    tag: 'Крипто-карта · Обзор',
-    rating: 3.5,
-    date: '2026-06-16',
-    dateText: '16 июня 2026',
-    summary: 'Предоплаченная крипто-карта Visa/Mastercard с пополнением USDT и онбордингом через Telegram-бота. Разбираем комиссии, лимиты, кастодиальную модель и риски «серой зоны».',
-    url: 'reviews/pintopay.html'
-  },
-  {
     slug: 'binibit',
     name: 'BiniBit (BINI)',
     short: 'BINI',
+    logo: 'assets/logos/binibit.png',
+    pinned: true,                 // 🚩 ФЛАГМАН: всегда первым вверху ленты
     tag: 'Биржа · Обзор',
     rating: 4.0,
     date: '2026-06-14',
     dateText: '14 июня 2026',
     summary: 'Биржа «powered by agents»: спот, BaiDEX, собственный Layer-1 BiniChain, launchpad, стейкинг и Telegram-приложение для майнинга. Разбираем, что внутри и на что смотреть.',
     url: 'reviews/binibit.html'
+  },
+  {
+    slug: 'aurum',
+    name: 'AURUM Foundation',
+    short: 'AUR',
+    logo: 'assets/logos/aurum.png',
+    tag: 'AI-финтех · Обзор',
+    rating: 4.5,
+    date: '2026-06-16',
+    dateText: '16 июня 2026',
+    summary: 'Финтех-экосистема нового поколения: AI-торговые боты, токенизированное золото (XAU), Web3-необанк с картами и токен AURUM. Разбираем продукты, доходность и как всё устроено.',
+    url: 'reviews/aurum.html'
+  },
+  {
+    slug: 'pintopay',
+    name: 'PinToPay',
+    short: 'P2P',
+    logo: 'assets/logos/pintopay.png',
+    tag: 'Крипто-карта · Обзор',
+    rating: 4.0,
+    date: '2026-06-16',
+    dateText: '16 июня 2026',
+    summary: 'Предоплаченная крипто-карта Visa/Mastercard с пополнением USDT и онбордингом через Telegram-бота. Разбираем комиссии, лимиты и как платить криптой везде.',
+    url: 'reviews/pintopay.html'
+  },
+  {
+    slug: 'metabox',
+    name: 'MetaBox',
+    short: 'MB',
+    logo: 'assets/logos/metabox.png',
+    tag: 'AI-обучение · Обзор',
+    rating: 4.5,
+    date: '2026-06-16',
+    dateText: '16 июня 2026',
+    summary: 'Платформа обучения нейросетям: ChatGPT, Midjourney, AI-видео, аватары и блогинг — 8 направлений в одной системе плюс партнёрская программа для заработка.',
+    url: 'reviews/metabox.html'
   }
-  // ↑ Новый проект добавляется СЮДА, сверху
+  // ↑ Новый проект добавляется СЮДА, сверху. pinned:true — закрепить флагманом наверху.
 ];
 
 /* --- РЕЕСТР НОВОСТЕЙ ---
    Чтобы добавить новость: допишите объект в начало массива (новые сверху). */
 const NEWS = [
+  {
+    date: '2026-06-16',
+    dateText: '16 июня 2026',
+    title: 'Три новых обзора: AURUM, PinToPay и MetaBox',
+    body: 'Добавили сразу три свежих разбора: AI-финтех экосистема AURUM Foundation, крипто-карта PinToPay и платформа обучения нейросетям MetaBox. Читайте, сравнивайте и оставляйте отзывы.',
+    link: 'index.html#reviews',
+    linkText: 'Смотреть обзоры →'
+  },
   {
     date: '2026-06-14',
     dateText: '14 июня 2026',
@@ -166,18 +201,32 @@ function initReviewForm(slug) {
 function initFeed() {
   const feed = document.getElementById('feed');
   if (!feed) return;
-  const sorted = [...PROJECTS].sort((a, b) => new Date(b.date) - new Date(a.date));
-  feed.innerHTML = sorted.map(p => `
-    <a class="feed-item" href="${p.url}">
-      <div class="feed-thumb">${escapeHtml(p.short)}</div>
+  // Сортировка: сначала закреплённый флагман (pinned), затем по дате (новые сверху)
+  const sorted = [...PROJECTS].sort((a, b) => {
+    if (a.pinned && !b.pinned) return -1;
+    if (b.pinned && !a.pinned) return 1;
+    return new Date(b.date) - new Date(a.date);
+  });
+  feed.innerHTML = sorted.map(p => {
+    const thumb = p.logo
+      ? `<div class="feed-thumb"><img src="${p.logo}" alt="${escapeHtml(p.name)} логотип" loading="lazy"></div>`
+      : `<div class="feed-thumb">${escapeHtml(p.short)}</div>`;
+    const pin = p.pinned ? `<span class="pin-badge">📌 Флагман</span>` : '';
+    return `
+    <a class="feed-item${p.pinned ? ' feed-pinned' : ''}" href="${p.url}">
+      ${thumb}
       <div class="feed-body">
-        <span class="card-tag">${escapeHtml(p.tag)}</span>
+        <div class="feed-tags">
+          <span class="card-tag">${escapeHtml(p.tag)}</span>
+          ${pin}
+        </div>
         <h3>${escapeHtml(p.name)}</h3>
         <div class="feed-date">🗓️ ${escapeHtml(p.dateText)} · ★ ${p.rating.toFixed(1)} / 5</div>
         <p>${escapeHtml(p.summary)}</p>
         <span class="card-link">Читать обзор →</span>
       </div>
-    </a>`).join('');
+    </a>`;
+  }).join('');
 }
 
 // --- Лента новостей (страница news.html) ---

@@ -204,13 +204,30 @@ a:hover { color: #fff; }
 
 /* ===== Footer ===== */
 .site-footer {
-  border-top: 1px solid var(--border); padding: 44px 0 30px;
+  position: relative;
+  border-top: 1px solid var(--border); padding: 50px 0 30px;
   color: var(--text-dim); font-size: .9rem;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 0%, rgba(245,185,66,.05), transparent),
+    linear-gradient(180deg, rgba(18,24,41,.4), transparent);
+}
+.site-footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--gold), var(--accent-2), transparent);
+  opacity: .6;
 }
 .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 30px; }
-.footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 14px; }
-.footer-col a { display: block; color: var(--text-dim); margin-bottom: 8px; }
-.footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; text-align: center; font-size: .85rem; }
+.footer-col h4 { color: #fff; font-size: 1.05rem; margin-bottom: 14px; }
+.footer-col a { display: block; color: var(--text-dim); margin-bottom: 8px; transition: color .2s, transform .2s; }
+.footer-col a:hover { color: var(--accent); transform: translateX(3px); }
+.footer-bottom {
+  border-top: 1px solid var(--border); padding-top: 20px; text-align: center; font-size: .85rem;
+  line-height: 1.6;
+}
+.footer-bottom::before {
+  content: "📊 💰 ₿ 📈 🪙"; display: block; font-size: 1.1rem; letter-spacing: 8px;
+  margin-bottom: 14px; opacity: .55;
+}
 
 /* ===== Лента обзоров (список) ===== */
 .feed { display: flex; flex-direction: column; gap: 18px; }
@@ -256,15 +273,33 @@ a:hover { color: #fff; }
 .contact-card .val { color: var(--accent); font-weight: 600; font-size: .92rem; word-break: break-all; }
 
 .feed-thumb {
-  width: 120px; height: 120px; flex-shrink: 0; border-radius: 10px; object-fit: cover;
-  background: linear-gradient(135deg, rgba(0,212,160,.2), rgba(59,130,246,.2));
+  width: 120px; height: 120px; flex-shrink: 0; border-radius: 14px; overflow: hidden;
+  background: linear-gradient(135deg, rgba(0,212,160,.18), rgba(59,130,246,.18));
+  border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; color: #fff;
 }
+.feed-thumb img { width: 76px; height: 76px; object-fit: contain; border-radius: 12px; }
 .feed-body { flex: 1; display: flex; flex-direction: column; }
-.feed-body .card-tag { margin-bottom: 8px; }
+.feed-tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.feed-body .card-tag { margin-bottom: 0; }
 .feed-body h3 { font-size: 1.25rem; margin-bottom: 6px; }
 .feed-date { color: var(--text-dim); font-size: .82rem; margin-bottom: 10px; }
 .feed-body p { color: var(--text-dim); font-size: .94rem; margin-bottom: 12px; flex-grow: 1; }
+
+/* Закреплённый флагман */
+.pin-badge {
+  display: inline-block; font-size: .68rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--gold);
+  background: rgba(245,185,66,.12); border: 1px solid rgba(245,185,66,.4);
+  padding: 3px 9px; border-radius: 6px;
+}
+.feed-pinned {
+  border-color: rgba(245,185,66,.45);
+  background: linear-gradient(135deg, rgba(245,185,66,.06), var(--bg-card) 60%);
+  box-shadow: 0 0 0 1px rgba(245,185,66,.12), 0 8px 30px rgba(245,185,66,.06);
+}
+.feed-pinned:hover { border-color: var(--gold); }
+.feed-pinned .feed-thumb { background: linear-gradient(135deg, rgba(245,185,66,.22), rgba(0,212,160,.14)); }
 
 /* ===== Медиа в статье ===== */
 .media-figure { margin: 26px 0; }
