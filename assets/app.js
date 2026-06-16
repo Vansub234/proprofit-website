@@ -270,7 +270,11 @@ function initReviewsHub() {
 
   async function getItems(slug) {
     if (USE_CLOUD) {
-      try { return await fetchReviewsCloud(slug); } catch (e) { /* fallback */ }
+      try {
+        const rows = await fetchReviewsCloud(slug);
+        // прячем служебные/тестовые записи неизвестных проектов в общем списке
+        return slug === '__all__' ? rows.filter(r => PROJECTS.some(p => p.slug === r._project)) : rows;
+      } catch (e) { /* fallback */ }
     }
     if (slug === '__all__') {
       let all = [];
@@ -291,8 +295,26 @@ function initReviewsHub() {
       : '<p class="rv-empty">Пока нет отзывов по выбранному проекту. Оставить отзыв можно на странице обзора.</p>';
   }
 
+  // Подсчёт счётчиков на вкладках: из облака (если доступно) или из localStorage
+  const KNOWN = PROJECTS.map(p => p.slug);
+  async function loadCounts() {
+    if (USE_CLOUD) {
+      try {
+        const all = await fetchReviewsCloud('__all__');
+        const counts = {};
+        all.forEach(r => { const s = r._project; if (s && KNOWN.includes(s)) counts[s] = (counts[s] || 0) + 1; });
+        return counts;
+      } catch (e) { /* fallback ниже */ }
+    }
+    const counts = {};
+    PROJECTS.forEach(p => { counts[p.slug] = countFor(p.slug); });
+    return counts;
+  }
+
+  // первичный рендер (мгновенно из localStorage), затем уточняем счётчики из облака
   renderTabs();
   renderReviews();
+  loadCounts().then(counts => renderTabs(counts));
 }
 
 // --- Форма тикета (страница contacts.html) ---
