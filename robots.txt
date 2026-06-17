@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://proprofit.vercel.app/sitemap.xml
+Sitemap: https://profit.team/sitemap.xml
