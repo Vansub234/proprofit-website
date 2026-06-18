@@ -10,7 +10,7 @@ const PROJECTS = [
     short: 'BINI',
     logo: 'assets/logos/binibit.png',
     pinned: true,                 // 🚩 ФЛАГМАН: всегда первым вверху ленты
-    refback: 3,                   // 💸 РефБек 3% (0 или убрать поле — если рефбека нет)
+    refback: 5,                   // 💸 РефБек 5% (0 или убрать поле — если рефбека нет)
     tag: 'Биржа · Обзор',
     rating: 4.0,
     date: '2026-06-14',
@@ -36,7 +36,6 @@ const PROJECTS = [
     name: 'PinToPay',
     short: 'P2P',
     logo: 'assets/logos/pintopay.png',
-    refback: 3,
     tag: 'Крипто-карта · Обзор',
     rating: 4.0,
     date: '2026-06-16',
@@ -49,7 +48,7 @@ const PROJECTS = [
     name: 'MetaBox',
     short: 'MB',
     logo: 'assets/logos/metabox.png',
-    refback: 3,
+    refback: 10,
     tag: 'AI-обучение · Обзор',
     rating: 4.5,
     date: '2026-06-16',
