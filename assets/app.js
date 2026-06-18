@@ -1,14 +1,20 @@
-/* ===== ProProfit — интерактив и данные ===== */
+/* ===== ProProfit — интерактив и данные (мультиязычность) ===== */
+
+/* Язык определяется по URL: /en/ , /vi/ , /th/ , /ms/ → иначе русский (корень) */
+const LANG = (function () {
+  const m = location.pathname.match(/\/(en|vi|th|ms)(\/|$)/);
+  return m ? m[1] : 'ru';
+})();
 
 /* --- РЕЕСТР ПРОЕКТОВ ---
    Чтобы добавить новый проект: допишите объект в начало массива (новые сверху).
-   slug — должен совпадать с именем html-файла в /reviews/ и с data-review-project. */
+   Поля tag/summary — на русском; переводы в i18n[lang]. */
 const PROJECTS = [
   {
     slug: 'binibit',
     name: 'BiniBit (BINI)',
     short: 'BINI',
-    logo: 'assets/logos/binibit.png',
+    logo: '/assets/logos/binibit.png',
     pinned: true,                 // 🚩 ФЛАГМАН: всегда первым вверху ленты
     refback: 5,                   // 💸 РефБек 5% (0 или убрать поле — если рефбека нет)
     tag: 'Биржа · Обзор',
@@ -16,60 +22,74 @@ const PROJECTS = [
     date: '2026-06-14',
     dateText: '14 июня 2026',
     summary: 'Биржа «powered by agents»: спот, BaiDEX, собственный Layer-1 BiniChain, launchpad, стейкинг и Telegram-приложение для майнинга. Разбираем, что внутри и на что смотреть.',
-    url: 'reviews/binibit.html'
+    url: 'reviews/binibit.html',
+    i18n: {
+      en: { tag: 'Exchange · Review', dateText: 'June 14, 2026', summary: 'A “powered by agents” exchange: spot, BaiDEX, its own Layer-1 BiniChain, launchpad, staking and a Telegram mining app. We break down what’s inside and what to watch.' }
+    }
   },
   {
     slug: 'aurum',
     name: 'AURUM Foundation',
     short: 'AUR',
-    logo: 'assets/logos/aurum.png',
+    logo: '/assets/logos/aurum.png',
     refback: 3,
     tag: 'AI-финтех · Обзор',
     rating: 4.5,
     date: '2026-06-16',
     dateText: '16 июня 2026',
     summary: 'Финтех-экосистема нового поколения: AI-торговые боты, токенизированное золото (XAU), Web3-необанк с картами и токен AURUM. Разбираем продукты, доходность и как всё устроено.',
-    url: 'reviews/aurum.html'
+    url: 'reviews/aurum.html',
+    i18n: {
+      en: { tag: 'AI fintech · Review', dateText: 'June 16, 2026', summary: 'A next-gen fintech ecosystem: AI trading bots, tokenized gold (XAU), a Web3 neobank with cards and the AURUM token. We break down the products and how it all works.' }
+    }
   },
   {
     slug: 'pintopay',
     name: 'PinToPay',
     short: 'P2P',
-    logo: 'assets/logos/pintopay.png',
+    logo: '/assets/logos/pintopay.png',
     tag: 'Крипто-карта · Обзор',
     rating: 4.0,
     date: '2026-06-16',
     dateText: '16 июня 2026',
     summary: 'Предоплаченная крипто-карта Visa/Mastercard с пополнением USDT и онбордингом через Telegram-бота. Разбираем комиссии, лимиты и как платить криптой везде.',
-    url: 'reviews/pintopay.html'
+    url: 'reviews/pintopay.html',
+    i18n: {
+      en: { tag: 'Crypto card · Review', dateText: 'June 16, 2026', summary: 'A prepaid Visa/Mastercard crypto card topped up with USDT and onboarded via a Telegram bot. We break down fees, limits and how to pay with crypto anywhere.' }
+    }
   },
   {
     slug: 'metabox',
     name: 'MetaBox',
     short: 'MB',
-    logo: 'assets/logos/metabox.png',
+    logo: '/assets/logos/metabox.png',
     refback: 10,
     tag: 'AI-обучение · Обзор',
     rating: 4.5,
     date: '2026-06-16',
     dateText: '16 июня 2026',
     summary: 'Платформа обучения нейросетям: ChatGPT, Midjourney, AI-видео, аватары и блогинг — 8 направлений в одной системе плюс партнёрская программа для заработка.',
-    url: 'reviews/metabox.html'
+    url: 'reviews/metabox.html',
+    i18n: {
+      en: { tag: 'AI learning · Review', dateText: 'June 16, 2026', summary: 'A platform for learning neural networks: ChatGPT, Midjourney, AI video, avatars and blogging — 8 tracks in one system plus an affiliate program to earn.' }
+    }
   }
   // ↑ Новый проект добавляется СЮДА, сверху. pinned:true — закрепить флагманом наверху.
 ];
 
-/* --- РЕЕСТР НОВОСТЕЙ ---
-   Чтобы добавить новость: допишите объект в начало массива (новые сверху). */
+/* --- РЕЕСТР НОВОСТЕЙ --- (новые сверху). Переводы в i18n[lang]. */
 const NEWS = [
   {
     date: '2026-06-18',
     dateText: '18 июня 2026',
     title: '🚀 BiniBIT запустил Telegram Mini App и расширяет экосистему',
-    image: 'assets/news/binibit-app-home.jpg',
+    image: '/assets/news/binibit-app-home.jpg',
     body: 'После запуска сети BiniChain команда BiniBIT выкатила полноценный Telegram Mini App: майнинг кристаллов, стейкинг до 160% годовых, задания, 3-уровневая рефералка, своя DEX BaiDEX и запуск собственных токенов — всё прямо внутри Telegram.',
     link: 'news/binibit-mini-app.html',
-    linkText: 'Читать полностью →'
+    linkText: 'Читать полностью →',
+    i18n: {
+      en: { dateText: 'June 18, 2026', title: '🚀 BiniBIT launched a Telegram Mini App and keeps expanding', body: 'After launching the BiniChain network, the BiniBIT team rolled out a full Telegram Mini App: crystal mining, staking up to 160% APR, tasks, a 3-level referral system, its own BaiDEX DEX and token launches — all inside Telegram.', linkText: 'Read more →' }
+    }
   },
   {
     date: '2026-06-16',
@@ -77,7 +97,10 @@ const NEWS = [
     title: 'Три новых обзора: AURUM, PinToPay и MetaBox',
     body: 'Добавили сразу три свежих разбора: AI-финтех экосистема AURUM Foundation, крипто-карта PinToPay и платформа обучения нейросетям MetaBox. Читайте, сравнивайте и оставляйте отзывы.',
     link: 'index.html#reviews',
-    linkText: 'Смотреть обзоры →'
+    linkText: 'Смотреть обзоры →',
+    i18n: {
+      en: { dateText: 'June 16, 2026', title: 'Three new reviews: AURUM, PinToPay and MetaBox', body: 'We added three fresh breakdowns at once: the AURUM Foundation AI-fintech ecosystem, the PinToPay crypto card and the MetaBox neural-network learning platform. Read, compare and leave reviews.', linkText: 'See reviews →' }
+    }
   },
   {
     date: '2026-06-14',
@@ -85,10 +108,49 @@ const NEWS = [
     title: 'Запуск сайта ProProfit',
     body: 'Мы открыли платформу независимых обзоров криптопроектов. Первый разбор — биржа BiniBit. Дальше будет больше проектов, отзывов и аналитики на разных языках.',
     link: 'reviews/binibit.html',
-    linkText: 'Читать первый обзор →'
+    linkText: 'Читать первый обзор →',
+    i18n: {
+      en: { dateText: 'June 14, 2026', title: 'ProProfit website launch', body: 'We launched a platform for independent crypto project reviews. The first breakdown is the BiniBit exchange. More projects, reviews and analytics in multiple languages are coming.', linkText: 'Read the first review →' }
+    }
   }
   // ↑ Новая новость добавляется СЮДА, сверху
 ];
+
+/* --- Переводы интерфейса (UI-строки) --- */
+const UI = {
+  ru: {
+    readReview: 'Читать обзор →',
+    flagship: '📌 Флагман',
+    refback: '💸 РефБек',
+    noReviews: 'Пока нет отзывов. Будьте первым, кто поделится опытом!',
+    noReviewsHub: 'Пока нет отзывов по выбранному проекту. Оставить отзыв можно на странице обзора.',
+    noNews: 'Новостей пока нет.',
+    allProjects: 'Все проекты',
+    enterText: 'Напишите текст отзыва',
+    anon: 'Аноним',
+    locale: 'ru-RU'
+  },
+  en: {
+    readReview: 'Read review →',
+    flagship: '📌 Flagship',
+    refback: '💸 RefBack',
+    noReviews: 'No reviews yet. Be the first to share your experience!',
+    noReviewsHub: 'No reviews for the selected project yet. You can leave a review on the project page.',
+    noNews: 'No news yet.',
+    allProjects: 'All projects',
+    enterText: 'Please write your review text',
+    anon: 'Anonymous',
+    locale: 'en-US'
+  }
+};
+const T = UI[LANG] || UI.ru;
+
+/* Хелперы: вернуть переведённое поле проекта/новости с фолбэком на русский */
+function pf(obj, field) {
+  if (LANG !== 'ru' && obj.i18n && obj.i18n[LANG] && obj.i18n[LANG][field] != null) return obj.i18n[LANG][field];
+  return obj[field];
+}
+
 
 // --- Бургер-меню (выдвижное) ---
 function initDrawer() {
@@ -155,13 +217,13 @@ function reviewCardHTML(r, opts) {
   return `
     <div class="rv-item">
       <div class="rv-head">
-        <strong>${escapeHtml(r.name || 'Аноним')}</strong>
+        <strong>${escapeHtml(r.name || T.anon)}</strong>
         <span class="rv-stars">${starStr(r.rating)}</span>
         ${proj}
-        <span class="rv-date">${new Date(r.ts).toLocaleDateString('ru-RU')}</span>
+        <span class="rv-date">${new Date(r.ts).toLocaleDateString(T.locale)}</span>
       </div>
       <p class="rv-text">${escapeHtml(r.text)}</p>
-      ${r.photo ? `<img class="rv-photo" src="${escapeHtml(r.photo)}" alt="фото к отзыву" loading="lazy">` : ''}
+      ${r.photo ? `<img class="rv-photo" src="${escapeHtml(r.photo)}" alt="review photo" loading="lazy">` : ''}
       ${ytEmbed(r.video)}
     </div>`;
 }
@@ -181,15 +243,15 @@ function initReviewForm(slug) {
     if (countEl) countEl.textContent = items.length;
     list.innerHTML = items.length
       ? items.map(r => reviewCardHTML(r)).join('')
-      : '<p class="rv-empty">Пока нет отзывов. Будьте первым, кто поделится опытом!</p>';
+      : `<p class="rv-empty">${T.noReviews}</p>`;
   }
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const fd = new FormData(form);
     const text = (fd.get('text') || '').toString().trim();
-    if (!text) { alert('Напишите текст отзыва'); return; }
+    if (!text) { alert(T.enterText); return; }
     const r = {
-      name: (fd.get('name') || '').toString().trim().slice(0, 60) || 'Аноним',
+      name: (fd.get('name') || '').toString().trim().slice(0, 60) || T.anon,
       rating: parseInt(fd.get('rating')) || 5,
       text: text.slice(0, 2000),
       photo: (fd.get('photo') || '').toString().trim(),
@@ -221,23 +283,23 @@ function initFeed() {
   });
   feed.innerHTML = sorted.map(p => {
     const thumb = p.logo
-      ? `<div class="feed-thumb"><img src="${p.logo}" alt="${escapeHtml(p.name)} логотип" loading="lazy"></div>`
+      ? `<div class="feed-thumb"><img src="${p.logo}" alt="${escapeHtml(p.name)}" loading="lazy"></div>`
       : `<div class="feed-thumb">${escapeHtml(p.short)}</div>`;
-    const pin = p.pinned ? `<span class="pin-badge">📌 Флагман</span>` : '';
-    const rb = p.refback ? `<span class="rb-badge">💸 РефБек ${p.refback}%</span>` : '';
+    const pin = p.pinned ? `<span class="pin-badge">${T.flagship}</span>` : '';
+    const rb = p.refback ? `<span class="rb-badge">${T.refback} ${p.refback}%</span>` : '';
     return `
     <a class="feed-item${p.pinned ? ' feed-pinned' : ''}" href="${p.url}">
       ${thumb}
       <div class="feed-body">
         <div class="feed-tags">
-          <span class="card-tag">${escapeHtml(p.tag)}</span>
+          <span class="card-tag">${escapeHtml(pf(p, 'tag'))}</span>
           ${pin}
           ${rb}
         </div>
         <h3>${escapeHtml(p.name)}</h3>
-        <div class="feed-date">🗓️ ${escapeHtml(p.dateText)} · ★ ${p.rating.toFixed(1)} / 5</div>
-        <p>${escapeHtml(p.summary)}</p>
-        <span class="card-link">Читать обзор →</span>
+        <div class="feed-date">🗓️ ${escapeHtml(pf(p, 'dateText'))} · ★ ${p.rating.toFixed(1)} / 5</div>
+        <p>${escapeHtml(pf(p, 'summary'))}</p>
+        <span class="card-link">${T.readReview}</span>
       </div>
     </a>`;
   }).join('');
@@ -250,14 +312,14 @@ function initNews() {
   const sorted = [...NEWS].sort((a, b) => new Date(b.date) - new Date(a.date));
   out.innerHTML = sorted.length ? sorted.map(n => `
     <article class="news-item${n.image ? ' news-item-media' : ''}">
-      ${n.image ? `<a class="news-thumb" href="${escapeHtml(n.link || '#')}"><img src="${escapeHtml(n.image)}" alt="${escapeHtml(n.title)}" loading="lazy"></a>` : ''}
+      ${n.image ? `<a class="news-thumb" href="${escapeHtml(n.link || '#')}"><img src="${escapeHtml(n.image)}" alt="${escapeHtml(pf(n, 'title'))}" loading="lazy"></a>` : ''}
       <div class="news-body">
-        <div class="news-date">🗓️ ${escapeHtml(n.dateText)}</div>
-        <h3>${escapeHtml(n.title)}</h3>
-        <p>${escapeHtml(n.body)}</p>
-        ${n.link ? `<a class="card-link" href="${escapeHtml(n.link)}">${escapeHtml(n.linkText || 'Подробнее →')}</a>` : ''}
+        <div class="news-date">🗓️ ${escapeHtml(pf(n, 'dateText'))}</div>
+        <h3>${escapeHtml(pf(n, 'title'))}</h3>
+        <p>${escapeHtml(pf(n, 'body'))}</p>
+        ${n.link ? `<a class="card-link" href="${escapeHtml(n.link)}">${escapeHtml(pf(n, 'linkText') || 'Подробнее →')}</a>` : ''}
       </div>
-    </article>`).join('') : '<p class="rv-empty">Новостей пока нет.</p>';
+    </article>`).join('') : `<p class="rv-empty">${T.noNews}</p>`;
 }
 
 // --- Хаб отзывов (страница otzyvy.html): выбор проекта + все отзывы ---
@@ -267,7 +329,7 @@ function initReviewsHub() {
   if (!tabs || !out) return;
 
   // вкладки: Все + каждый проект
-  const tabsData = [{ slug: '__all__', name: 'Все проекты' }].concat(PROJECTS.map(p => ({ slug: p.slug, name: p.name })));
+  const tabsData = [{ slug: '__all__', name: T.allProjects }].concat(PROJECTS.map(p => ({ slug: p.slug, name: p.name })));
   let active = '__all__';
 
   function countFor(slug) { return loadReviewsLocal(slug).length; }
@@ -309,7 +371,7 @@ function initReviewsHub() {
     items.sort((a, b) => b.ts - a.ts);
     out.innerHTML = items.length
       ? items.map(r => reviewCardHTML(r, { showProject: true })).join('')
-      : '<p class="rv-empty">Пока нет отзывов по выбранному проекту. Оставить отзыв можно на странице обзора.</p>';
+      : `<p class="rv-empty">${T.noReviewsHub}</p>`;
   }
 
   // Подсчёт счётчиков на вкладках: из облака (если доступно) или из localStorage
@@ -392,8 +454,39 @@ function initAnalytics() {
   }
 }
 
+// --- Переключатель языков ---
+// Строит ссылки на ту же страницу на других языках.
+// RU — в корне (/...), остальные — в /<lang>/...
+function initLangSwitch() {
+  const box = document.getElementById('langSwitch');
+  if (!box) return;
+  const LANGS = [
+    { code: 'ru', label: 'RU', flag: '🇷🇺' },
+    { code: 'en', label: 'EN', flag: '🇬🇧' }
+  ];
+  // путь без языкового префикса
+  let path = location.pathname;
+  path = path.replace(/^\/(en|vi|th|ms)(\/|$)/, '/');
+  if (!path.startsWith('/')) path = '/' + path;
+
+  function urlFor(code) {
+    return code === 'ru' ? path : ('/' + code + path);
+  }
+  const cur = LANGS.find(l => l.code === LANG) || LANGS[0];
+  box.innerHTML = `
+    <button class="lang-btn" id="langBtn" aria-label="Язык">${cur.flag} ${cur.label} ▾</button>
+    <div class="lang-menu" id="langMenu">
+      ${LANGS.map(l => `<a href="${urlFor(l.code)}"${l.code === LANG ? ' class="active"' : ''}>${l.flag} ${l.label}</a>`).join('')}
+    </div>`;
+  const btn = box.querySelector('#langBtn');
+  const menu = box.querySelector('#langMenu');
+  btn.addEventListener('click', e => { e.stopPropagation(); menu.classList.toggle('open'); });
+  document.addEventListener('click', () => menu.classList.remove('open'));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initAnalytics();
+  initLangSwitch();
   initDrawer();
   initFeed();
   initNews();

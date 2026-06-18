@@ -1,48 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
   <url>
     <loc>https://proprofit.team/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proprofit.team/"/>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://proprofit.team/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proprofit.team/"/>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Reviews: BiniBit -->
+  <url>
     <loc>https://proprofit.team/reviews/binibit.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/reviews/binibit.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/reviews/binibit.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://proprofit.team/en/reviews/binibit.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Reviews: AURUM -->
   <url>
     <loc>https://proprofit.team/reviews/aurum.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/reviews/aurum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/reviews/aurum.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://proprofit.team/en/reviews/aurum.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Reviews: PinToPay -->
   <url>
     <loc>https://proprofit.team/reviews/pintopay.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/reviews/pintopay.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/reviews/pintopay.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://proprofit.team/en/reviews/pintopay.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Reviews: MetaBox -->
   <url>
     <loc>https://proprofit.team/reviews/metabox.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/reviews/metabox.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/reviews/metabox.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://proprofit.team/en/reviews/metabox.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- News index -->
+  <url>
     <loc>https://proprofit.team/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/news.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/news.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://proprofit.team/en/news.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- News article: BiniBIT Mini App -->
+  <url>
     <loc>https://proprofit.team/news/binibit-mini-app.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/news/binibit-mini-app.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/news/binibit-mini-app.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://proprofit.team/en/news/binibit-mini-app.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Testimonials -->
+  <url>
     <loc>https://proprofit.team/otzyvy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/otzyvy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/otzyvy.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://proprofit.team/en/otzyvy.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contacts -->
+  <url>
     <loc>https://proprofit.team/contacts.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/contacts.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/contacts.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://proprofit.team/en/contacts.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
