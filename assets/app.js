@@ -10,6 +10,7 @@ const PROJECTS = [
     short: 'BINI',
     logo: 'assets/logos/binibit.png',
     pinned: true,                 // 🚩 ФЛАГМАН: всегда первым вверху ленты
+    refback: 3,                   // 💸 РефБек 3% (0 или убрать поле — если рефбека нет)
     tag: 'Биржа · Обзор',
     rating: 4.0,
     date: '2026-06-14',
@@ -22,6 +23,7 @@ const PROJECTS = [
     name: 'AURUM Foundation',
     short: 'AUR',
     logo: 'assets/logos/aurum.png',
+    refback: 3,
     tag: 'AI-финтех · Обзор',
     rating: 4.5,
     date: '2026-06-16',
@@ -34,6 +36,7 @@ const PROJECTS = [
     name: 'PinToPay',
     short: 'P2P',
     logo: 'assets/logos/pintopay.png',
+    refback: 3,
     tag: 'Крипто-карта · Обзор',
     rating: 4.0,
     date: '2026-06-16',
@@ -46,6 +49,7 @@ const PROJECTS = [
     name: 'MetaBox',
     short: 'MB',
     logo: 'assets/logos/metabox.png',
+    refback: 3,
     tag: 'AI-обучение · Обзор',
     rating: 4.5,
     date: '2026-06-16',
@@ -221,6 +225,7 @@ function initFeed() {
       ? `<div class="feed-thumb"><img src="${p.logo}" alt="${escapeHtml(p.name)} логотип" loading="lazy"></div>`
       : `<div class="feed-thumb">${escapeHtml(p.short)}</div>`;
     const pin = p.pinned ? `<span class="pin-badge">📌 Флагман</span>` : '';
+    const rb = p.refback ? `<span class="rb-badge">💸 РефБек ${p.refback}%</span>` : '';
     return `
     <a class="feed-item${p.pinned ? ' feed-pinned' : ''}" href="${p.url}">
       ${thumb}
@@ -228,6 +233,7 @@ function initFeed() {
         <div class="feed-tags">
           <span class="card-tag">${escapeHtml(p.tag)}</span>
           ${pin}
+          ${rb}
         </div>
         <h3>${escapeHtml(p.name)}</h3>
         <div class="feed-date">🗓️ ${escapeHtml(p.dateText)} · ★ ${p.rating.toFixed(1)} / 5</div>
