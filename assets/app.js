@@ -60,6 +60,15 @@ const PROJECTS = [
    Чтобы добавить новость: допишите объект в начало массива (новые сверху). */
 const NEWS = [
   {
+    date: '2026-06-18',
+    dateText: '18 июня 2026',
+    title: '🚀 BiniBIT запустил Telegram Mini App и расширяет экосистему',
+    image: 'assets/news/binibit-app-home.jpg',
+    body: 'После запуска сети BiniChain команда BiniBIT выкатила полноценный Telegram Mini App: майнинг кристаллов, стейкинг до 160% годовых, задания, 3-уровневая рефералка, своя DEX BaiDEX и запуск собственных токенов — всё прямо внутри Telegram.',
+    link: 'news/binibit-mini-app.html',
+    linkText: 'Читать полностью →'
+  },
+  {
     date: '2026-06-16',
     dateText: '16 июня 2026',
     title: 'Три новых обзора: AURUM, PinToPay и MetaBox',
@@ -235,11 +244,14 @@ function initNews() {
   if (!out) return;
   const sorted = [...NEWS].sort((a, b) => new Date(b.date) - new Date(a.date));
   out.innerHTML = sorted.length ? sorted.map(n => `
-    <article class="news-item">
-      <div class="news-date">🗓️ ${escapeHtml(n.dateText)}</div>
-      <h3>${escapeHtml(n.title)}</h3>
-      <p>${escapeHtml(n.body)}</p>
-      ${n.link ? `<a class="card-link" href="${escapeHtml(n.link)}">${escapeHtml(n.linkText || 'Подробнее →')}</a>` : ''}
+    <article class="news-item${n.image ? ' news-item-media' : ''}">
+      ${n.image ? `<a class="news-thumb" href="${escapeHtml(n.link || '#')}"><img src="${escapeHtml(n.image)}" alt="${escapeHtml(n.title)}" loading="lazy"></a>` : ''}
+      <div class="news-body">
+        <div class="news-date">🗓️ ${escapeHtml(n.dateText)}</div>
+        <h3>${escapeHtml(n.title)}</h3>
+        <p>${escapeHtml(n.body)}</p>
+        ${n.link ? `<a class="card-link" href="${escapeHtml(n.link)}">${escapeHtml(n.linkText || 'Подробнее →')}</a>` : ''}
+      </div>
     </article>`).join('') : '<p class="rv-empty">Новостей пока нет.</p>';
 }
 
