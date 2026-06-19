@@ -151,6 +151,18 @@ function pf(obj, field) {
   return obj[field];
 }
 
+/* Базовый префикс языка: '' для RU (корень), '/en' для EN и т.д.
+   Делает ссылки ленты/новостей АБСОЛЮТНЫМИ и привязанными к языку,
+   чтобы с /en/ обзоры открывались на /en/, а не на русском. */
+const LANGBASE = (LANG === 'ru') ? '' : ('/' + LANG);
+function localUrl(rel) {
+  if (!rel) return rel;
+  // внешние ссылки и якоря не трогаем
+  if (/^(https?:|mailto:|tel:|#)/.test(rel)) return rel;
+  rel = rel.replace(/^\//, '');                 // убираем ведущий слеш если есть
+  return LANGBASE + '/' + rel;                  // напр. /en/reviews/binibit.html
+}
+
 
 // --- Бургер-меню (выдвижное) ---
 function initDrawer() {
@@ -288,7 +300,7 @@ function initFeed() {
     const pin = p.pinned ? `<span class="pin-badge">${T.flagship}</span>` : '';
     const rb = p.refback ? `<span class="rb-badge">${T.refback} ${p.refback}%</span>` : '';
     return `
-    <a class="feed-item${p.pinned ? ' feed-pinned' : ''}" href="${p.url}">
+    <a class="feed-item${p.pinned ? ' feed-pinned' : ''}" href="${localUrl(p.url)}">
       ${thumb}
       <div class="feed-body">
         <div class="feed-tags">
@@ -312,12 +324,12 @@ function initNews() {
   const sorted = [...NEWS].sort((a, b) => new Date(b.date) - new Date(a.date));
   out.innerHTML = sorted.length ? sorted.map(n => `
     <article class="news-item${n.image ? ' news-item-media' : ''}">
-      ${n.image ? `<a class="news-thumb" href="${escapeHtml(n.link || '#')}"><img src="${escapeHtml(n.image)}" alt="${escapeHtml(pf(n, 'title'))}" loading="lazy"></a>` : ''}
+      ${n.image ? `<a class="news-thumb" href="${localUrl(n.link) || '#'}"><img src="${escapeHtml(n.image)}" alt="${escapeHtml(pf(n, 'title'))}" loading="lazy"></a>` : ''}
       <div class="news-body">
         <div class="news-date">🗓️ ${escapeHtml(pf(n, 'dateText'))}</div>
         <h3>${escapeHtml(pf(n, 'title'))}</h3>
         <p>${escapeHtml(pf(n, 'body'))}</p>
-        ${n.link ? `<a class="card-link" href="${escapeHtml(n.link)}">${escapeHtml(pf(n, 'linkText') || 'Подробнее →')}</a>` : ''}
+        ${n.link ? `<a class="card-link" href="${localUrl(n.link)}">${escapeHtml(pf(n, 'linkText') || 'Подробнее →')}</a>` : ''}
       </div>
     </article>`).join('') : `<p class="rv-empty">${T.noNews}</p>`;
 }

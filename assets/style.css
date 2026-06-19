@@ -424,20 +424,17 @@ a:hover { color: #fff; }
 
 @media (max-width: 680px) {
   .nav-links { display: none; }
-  .nav { height: 60px; gap: 10px; }
-  .nav-left { gap: 10px; min-width: 0; flex-shrink: 1; }
-  .logo { font-size: 1.05rem; min-width: 0; }
-  .logo-img { width: 28px; height: 28px; }
-  .logo-badge { font-size: .55rem; padding: 2px 6px; }
-  .site-header .btn-primary {
-    padding: 8px 12px; font-size: .8rem; white-space: nowrap; flex-shrink: 0;
-  }
+  .nav { height: 58px; gap: 8px; }
+  .nav-left { gap: 8px; min-width: 0; flex-shrink: 1; overflow: hidden; }
+  .logo { font-size: 1rem; min-width: 0; gap: 6px; }
+  .logo-img { width: 26px; height: 26px; }
+  .logo-badge { display: none; }
+  /* На мобиле прячем текстовую Telegram-кнопку в шапке — она есть в меню и футере */
+  .site-header .btn-primary { display: none; }
+  .lang-switch { flex-shrink: 0; margin-left: auto; }
+  .lang-btn { padding: 7px 10px; font-size: .8rem; }
   .hero { padding: 60px 0 50px; }
   .footer-grid { flex-direction: column; }
   .feed-item { flex-direction: column; }
   .feed-thumb { width: 100%; height: 80px; }
-}
-@media (max-width: 380px) {
-  .logo-badge { display: none; }
-  .site-header .btn-primary { padding: 7px 10px; font-size: .72rem; }
 }
