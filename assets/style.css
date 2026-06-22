@@ -387,6 +387,14 @@ a:hover { color: #fff; }
 .feed-pinned:hover { border-color: var(--gold); }
 .feed-pinned .feed-thumb { background: linear-gradient(135deg, rgba(245,185,66,.22), rgba(0,212,160,.14)); }
 
+/* Закреплённая новость в ленте обзоров */
+.feed-news { border-color: rgba(59,130,246,.4); }
+.feed-news:hover { border-color: var(--accent-2); }
+.feed-news .feed-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+.card-tag.news-tag {
+  color: var(--accent-2); background: rgba(59,130,246,.12);
+}
+
 /* ===== Медиа в статье ===== */
 .media-figure { margin: 26px 0; }
 .media-figure img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); display: block; }

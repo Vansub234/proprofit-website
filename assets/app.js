@@ -295,6 +295,37 @@ function initReviewForm(slug) {
   render();
 }
 
+// --- Закреплённая новость в ленте обзоров (показывается под флагманом) ---
+// Чтобы убрать/сменить — отредактируй этот объект (или сделай FEATURED_NEWS = null).
+const FEATURED_NEWS = {
+  badge: '🗓️ Сводка недели',
+  date: '2026-06-22',
+  dateText: '22 июня 2026',
+  title: 'Сводка недели: BiniBIT, RoboForex AI, AURUM Neyro, MetaBox',
+  summary: 'Итоги недели по портфелю: обновление BiniBIT и рост BINI в 5.5 раза с апреля, новый AI-продукт для RoboForex, запуск Neyro Bot в AURUM и развитие MetaBox.',
+  image: '/assets/news/digest-0622/binibit-chart.jpg',
+  url: 'news/digest-2026-06-22.html',
+  i18n: {
+    en: { badge: '🗓️ Weekly digest', dateText: 'June 22, 2026', title: 'Weekly digest: BiniBIT, RoboForex AI, AURUM Neyro, MetaBox', summary: 'Portfolio weekly recap: a BiniBIT update and BINI up 5.5x since April, a new AI product for RoboForex, the Neyro Bot launch in AURUM and MetaBox growth.' }
+  }
+};
+
+function featuredNewsCardHTML(n) {
+  return `
+    <a class="feed-item feed-news" href="${localUrl(n.url)}">
+      <div class="feed-thumb"><img src="${n.image}" alt="${escapeHtml(pf(n,'title'))}" loading="lazy"></div>
+      <div class="feed-body">
+        <div class="feed-tags">
+          <span class="card-tag news-tag">${escapeHtml(pf(n,'badge'))}</span>
+        </div>
+        <h3>${escapeHtml(pf(n,'title'))}</h3>
+        <div class="feed-date">🗓️ ${escapeHtml(pf(n,'dateText'))}</div>
+        <p>${escapeHtml(pf(n,'summary'))}</p>
+        <span class="card-link">${LANG === 'en' ? 'Read the digest →' : 'Читать сводку →'}</span>
+      </div>
+    </a>`;
+}
+
 // --- Лента обзоров на главной (строится из PROJECTS) ---
 function initFeed() {
   const feed = document.getElementById('feed');
@@ -305,7 +336,7 @@ function initFeed() {
     if (b.pinned && !a.pinned) return 1;
     return new Date(b.date) - new Date(a.date);
   });
-  feed.innerHTML = sorted.map(p => {
+  const cards = sorted.map(p => {
     const thumb = p.logo
       ? `<div class="feed-thumb"><img src="${p.logo}" alt="${escapeHtml(p.name)}" loading="lazy"></div>`
       : `<div class="feed-thumb">${escapeHtml(p.short)}</div>`;
@@ -326,7 +357,13 @@ function initFeed() {
         <span class="card-link">${T.readReview}</span>
       </div>
     </a>`;
-  }).join('');
+  });
+  // Закреплённую новость вставляем сразу после флагмана (позиция 2)
+  if (FEATURED_NEWS) {
+    const flagshipCount = sorted.filter(p => p.pinned).length; // обычно 1
+    cards.splice(flagshipCount, 0, featuredNewsCardHTML(FEATURED_NEWS));
+  }
+  feed.innerHTML = cards.join('');
 }
 
 // --- Лента новостей (страница news.html) ---
