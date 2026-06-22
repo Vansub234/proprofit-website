@@ -80,6 +80,18 @@ const PROJECTS = [
 /* --- РЕЕСТР НОВОСТЕЙ --- (новые сверху). Переводы в i18n[lang]. */
 const NEWS = [
   {
+    date: '2026-06-22',
+    dateText: '22 июня 2026',
+    title: '🚀 Сводка недели: BiniBIT, RoboForex AI, AURUM Neyro, MetaBox',
+    image: '/assets/news/digest-0622/binibit-chart.jpg',
+    body: 'Итоги недели по портфелю ProProfit: крупное обновление биржи BiniBIT и рост BINI в 5.5 раза с апреля, новый AI-продукт для RoboForex, запуск Neyro Bot в AURUM и развитие экосистемы MetaBox.',
+    link: 'news/digest-2026-06-22.html',
+    linkText: 'Читать сводку →',
+    i18n: {
+      en: { dateText: 'June 22, 2026', title: '🚀 Weekly digest: BiniBIT, RoboForex AI, AURUM Neyro, MetaBox', body: 'ProProfit portfolio weekly recap: a major BiniBIT exchange update and BINI up 5.5x since April, a new AI product for RoboForex, the Neyro Bot launch in AURUM and MetaBox ecosystem growth.', linkText: 'Read the digest →' }
+    }
+  },
+  {
     date: '2026-06-18',
     dateText: '18 июня 2026',
     title: '🚀 BiniBIT запустил Telegram Mini App и расширяет экосистему',

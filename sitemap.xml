@@ -92,6 +92,11 @@
 
   <!-- News article: BiniBIT Mini App -->
   <url>
+    <loc>https://proprofit.team/news/digest-2026-06-22.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://proprofit.team/news/binibit-mini-app.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://proprofit.team/news/binibit-mini-app.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://proprofit.team/en/news/binibit-mini-app.html"/>
